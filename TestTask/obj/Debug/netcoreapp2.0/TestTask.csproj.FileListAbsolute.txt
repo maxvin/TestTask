@@ -1,0 +1,11 @@
+C:\Users\Burdziakivkyi\Desktop\Sandbox\TestTask\TestTask\bin\Debug\netcoreapp2.0\TestTask.deps.json
+C:\Users\Burdziakivkyi\Desktop\Sandbox\TestTask\TestTask\bin\Debug\netcoreapp2.0\TestTask.runtimeconfig.json
+C:\Users\Burdziakivkyi\Desktop\Sandbox\TestTask\TestTask\bin\Debug\netcoreapp2.0\TestTask.runtimeconfig.dev.json
+C:\Users\Burdziakivkyi\Desktop\Sandbox\TestTask\TestTask\bin\Debug\netcoreapp2.0\TestTask.dll
+C:\Users\Burdziakivkyi\Desktop\Sandbox\TestTask\TestTask\bin\Debug\netcoreapp2.0\TestTask.pdb
+C:\Users\Burdziakivkyi\Desktop\Sandbox\TestTask\TestTask\obj\Debug\netcoreapp2.0\TestTask.csprojResolveAssemblyReference.cache
+C:\Users\Burdziakivkyi\Desktop\Sandbox\TestTask\TestTask\obj\Debug\netcoreapp2.0\TestTask.csproj.CoreCompileInputs.cache
+C:\Users\Burdziakivkyi\Desktop\Sandbox\TestTask\TestTask\obj\Debug\netcoreapp2.0\TestTask.AssemblyInfoInputs.cache
+C:\Users\Burdziakivkyi\Desktop\Sandbox\TestTask\TestTask\obj\Debug\netcoreapp2.0\TestTask.AssemblyInfo.cs
+C:\Users\Burdziakivkyi\Desktop\Sandbox\TestTask\TestTask\obj\Debug\netcoreapp2.0\TestTask.dll
+C:\Users\Burdziakivkyi\Desktop\Sandbox\TestTask\TestTask\obj\Debug\netcoreapp2.0\TestTask.pdb
