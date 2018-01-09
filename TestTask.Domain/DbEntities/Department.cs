@@ -14,7 +14,9 @@ namespace TestTask.Domain.DbEntities
         [Required]
         public string Name { get; set; }
 
-        [ForeignKey("User")]
+        [ForeignKey("Id")]
+        public int ManagerId { get; set; }
+
         public virtual User Manager { get; set; }
 
         [Required]
