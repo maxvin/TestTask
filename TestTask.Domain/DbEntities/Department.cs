@@ -9,15 +9,10 @@ namespace TestTask.Domain.DbEntities
     public class Department
     {
         [Key]
-        public int Id { get; set; }
+        public int DepartmentId { get; set; }
 
         [Required]
         public string Name { get; set; }
-
-        [ForeignKey("Id")]
-        public int ManagerId { get; set; }
-
-        public virtual User Manager { get; set; }
 
         [Required]
         public string Address { get; set; }

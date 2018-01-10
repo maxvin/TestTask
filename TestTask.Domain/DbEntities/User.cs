@@ -23,10 +23,16 @@ namespace TestTask.Domain.DbEntities
         [DataType(DataType.EmailAddress)]
         public string Mail { get; set; }
         
+        [ForeignKey("Id")]
+        public int DepartmentId { get; set; }
+
         public virtual Department Department { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+
+        public bool IsManager { get; set; }
+
     }
 }

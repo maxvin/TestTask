@@ -16,3 +16,12 @@ C:\Users\Burdziakivkyi\Desktop\Sandbox\TestTaskGit\TestTask.Domain\obj\Debug\net
 C:\Users\Burdziakivkyi\Desktop\Sandbox\TestTaskGit\TestTask.Domain\obj\Debug\netcoreapp2.0\TestTask.Domain.AssemblyInfo.cs
 C:\Users\Burdziakivkyi\Desktop\Sandbox\TestTaskGit\TestTask.Domain\obj\Debug\netcoreapp2.0\TestTask.Domain.dll
 C:\Users\Burdziakivkyi\Desktop\Sandbox\TestTaskGit\TestTask.Domain\obj\Debug\netcoreapp2.0\TestTask.Domain.pdb
+C:\Users\VBurdziakivskyi.SEO\Documents\TestTask\TestTask.Domain\bin\Debug\netcoreapp2.0\TestTask.Domain.deps.json
+C:\Users\VBurdziakivskyi.SEO\Documents\TestTask\TestTask.Domain\bin\Debug\netcoreapp2.0\TestTask.Domain.dll
+C:\Users\VBurdziakivskyi.SEO\Documents\TestTask\TestTask.Domain\bin\Debug\netcoreapp2.0\TestTask.Domain.pdb
+C:\Users\VBurdziakivskyi.SEO\Documents\TestTask\TestTask.Domain\obj\Debug\netcoreapp2.0\TestTask.Domain.csprojResolveAssemblyReference.cache
+C:\Users\VBurdziakivskyi.SEO\Documents\TestTask\TestTask.Domain\obj\Debug\netcoreapp2.0\TestTask.Domain.csproj.CoreCompileInputs.cache
+C:\Users\VBurdziakivskyi.SEO\Documents\TestTask\TestTask.Domain\obj\Debug\netcoreapp2.0\TestTask.Domain.AssemblyInfoInputs.cache
+C:\Users\VBurdziakivskyi.SEO\Documents\TestTask\TestTask.Domain\obj\Debug\netcoreapp2.0\TestTask.Domain.AssemblyInfo.cs
+C:\Users\VBurdziakivskyi.SEO\Documents\TestTask\TestTask.Domain\obj\Debug\netcoreapp2.0\TestTask.Domain.dll
+C:\Users\VBurdziakivskyi.SEO\Documents\TestTask\TestTask.Domain\obj\Debug\netcoreapp2.0\TestTask.Domain.pdb
