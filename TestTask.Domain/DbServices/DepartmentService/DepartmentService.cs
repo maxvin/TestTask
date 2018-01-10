@@ -21,12 +21,28 @@ namespace TestTask.Domain.DbServices.DepartmentService
 
         public IList<Department> GetDepartments()
         {
-            return _appDbContext.Departments.ToList(); ;
+            return _appDbContext.Departments.ToList();
         }
 
         public IList<Department> GetDepartments(int count)
         {
             throw new NotImplementedException();
         }
+
+        public bool AddDepartment(Department department)
+        {
+            try
+            {
+                _appDbContext.Departments.Add(department);
+                _appDbContext.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
     }
 }

@@ -26,24 +26,31 @@ namespace TestTask.WebUI.Controllers
             _departmentService = departmentService;
         }
 
+        [HttpGet]
         public IActionResult Register()
         {
-            ViewBag.DepartmentsList = new SelectList(_departmentService.GetDepartments(), "Id", "Name");
+            ViewBag.DepartmentsList = new SelectList(_departmentService.GetDepartments().ToList(), "Id", "Name");
             return View();
         }
 
+        [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel registerModel) {
+
+            var departments = _departmentService.GetDepartments();
 
             if (ModelState.IsValid)
             {
-                User user = new User { UserName = registerModel.UserName, Department = registerModel.Department };
+                var registerDepartment = departments.First(e=>e.Id == registerModel.DepartmentId);
+                User user = new User { UserName = registerModel.UserName, Department = registerDepartment };
                 var result = await _userDbService.AddUser(user, registerModel.Password);
 
                 if (result.Succeeded) return RedirectToAction("Site", "Index");
             }
 
+            ViewBag.DepartmentsList = new SelectList(departments.ToList(), "Id", "Name"); ;
             return View(registerModel);
 
         }
+
     }
 }

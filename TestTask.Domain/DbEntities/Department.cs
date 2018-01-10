@@ -9,7 +9,7 @@ namespace TestTask.Domain.DbEntities
     public class Department
     {
         [Key]
-        public int DepartmentId { get; set; }
+        public int Id { get; set; }
 
         [Required]
         public string Name { get; set; }

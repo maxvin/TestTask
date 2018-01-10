@@ -20,6 +20,9 @@
                 </button>
                 <a asp-area="" asp-controller="Site" asp-action="Index" class="navbar-brand">Test task project</a>
             </div>
+            <div class="navbar-collapse collapse">
+                @await Html.PartialAsync("_LoginPartial")
+            </div>
         </div>
     </nav>
     <div class="container body-content">

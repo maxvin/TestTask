@@ -11,9 +11,10 @@ using TestTask.Domain;
 namespace TestTask.Domain.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180110213119_New-Fields")]
+    partial class NewFields
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -91,7 +92,7 @@ namespace TestTask.Domain.Migrations
 
             modelBuilder.Entity("TestTask.Domain.DbEntities.Department", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("DepartmentId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Address")
@@ -102,7 +103,7 @@ namespace TestTask.Domain.Migrations
                     b.Property<string>("Name")
                         .IsRequired();
 
-                    b.HasKey("Id");
+                    b.HasKey("DepartmentId");
 
                     b.HasIndex("CustomerId");
 
@@ -120,7 +121,7 @@ namespace TestTask.Domain.Migrations
 
                     b.Property<int?>("CustomerId");
 
-                    b.Property<int?>("DepartmentId");
+                    b.Property<int>("DepartmentId");
 
                     b.Property<string>("Email");
 
@@ -128,7 +129,7 @@ namespace TestTask.Domain.Migrations
 
                     b.Property<string>("Id");
 
-                    b.Property<bool>("IsUserManager");
+                    b.Property<bool>("IsManager");
 
                     b.Property<bool>("LockoutEnabled");
 
@@ -200,7 +201,8 @@ namespace TestTask.Domain.Migrations
 
                     b.HasOne("TestTask.Domain.DbEntities.Department", "Department")
                         .WithMany()
-                        .HasForeignKey("DepartmentId");
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

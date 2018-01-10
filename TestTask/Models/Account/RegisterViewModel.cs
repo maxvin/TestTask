@@ -12,7 +12,8 @@ namespace TestTask.Domain.DbEntities.AccountEntities
         public string UserName { get; set; }
         
         [Required]
-        public Department Department { get; set; }
+        [Display(Name = "Department")]
+        public int DepartmentId { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -20,6 +21,7 @@ namespace TestTask.Domain.DbEntities.AccountEntities
 
         [Required]
         [Compare("Password")]
+        [Display(Name = "Password confirm")]
         [DataType(DataType.Password)]
         public string PasswordConfirm { get; set; }
 
