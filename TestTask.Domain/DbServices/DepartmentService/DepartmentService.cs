@@ -10,13 +10,10 @@ namespace TestTask.Domain.DbServices.DepartmentService
     public class DepartmentService : IDepartmentService
     {
         private readonly ApplicationDbContext _appDbContext;
-        private readonly ApplicationIdentityContext _appIdentityDbContext;
 
-        public DepartmentService(ApplicationDbContext appDbContext,
-            ApplicationIdentityContext appIdentityDbContext)
+        public DepartmentService(ApplicationDbContext appDbContext)
         {
             _appDbContext = appDbContext;
-            _appIdentityDbContext = appIdentityDbContext;
         }
 
         public IList<Department> GetDepartments()

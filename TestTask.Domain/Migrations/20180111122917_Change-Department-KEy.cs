@@ -4,23 +4,24 @@ using System.Collections.Generic;
 
 namespace TestTask.Domain.Migrations
 {
-    public partial class NewFields3 : Migration
+    public partial class ChangeDepartmentKEy : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Users_Departments_DepartmentId",
-                table: "Users");
-
             migrationBuilder.AlterColumn<int>(
                 name: "DepartmentId",
-                table: "Users",
+                table: "AspNetUsers",
                 nullable: true,
                 oldClrType: typeof(int));
 
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_DepartmentId",
+                table: "AspNetUsers",
+                column: "DepartmentId");
+
             migrationBuilder.AddForeignKey(
-                name: "FK_Users_Departments_DepartmentId",
-                table: "Users",
+                name: "FK_AspNetUsers_Departments_DepartmentId",
+                table: "AspNetUsers",
                 column: "DepartmentId",
                 principalTable: "Departments",
                 principalColumn: "Id",
@@ -30,23 +31,19 @@ namespace TestTask.Domain.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Users_Departments_DepartmentId",
-                table: "Users");
+                name: "FK_AspNetUsers_Departments_DepartmentId",
+                table: "AspNetUsers");
+
+            migrationBuilder.DropIndex(
+                name: "IX_AspNetUsers_DepartmentId",
+                table: "AspNetUsers");
 
             migrationBuilder.AlterColumn<int>(
                 name: "DepartmentId",
-                table: "Users",
+                table: "AspNetUsers",
                 nullable: false,
                 oldClrType: typeof(int),
                 oldNullable: true);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Users_Departments_DepartmentId",
-                table: "Users",
-                column: "DepartmentId",
-                principalTable: "Departments",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
         }
     }
 }

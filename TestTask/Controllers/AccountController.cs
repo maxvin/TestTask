@@ -41,7 +41,12 @@ namespace TestTask.WebUI.Controllers
             if (ModelState.IsValid)
             {
                 var registerDepartment = departments.First(e=>e.Id == registerModel.DepartmentId);
-                User user = new User { UserName = registerModel.UserName, Department = registerDepartment };
+                User user = new User { UserName = registerModel.UserName,
+                    Department = registerDepartment,
+                    Email = registerModel.Email,
+                    Mobile = registerModel.Mobile,
+                    Name = registerModel.UserName
+                };
                 var result = await _userDbService.AddUser(user, registerModel.Password);
 
                 if (result.Succeeded) return RedirectToAction("Site", "Index");

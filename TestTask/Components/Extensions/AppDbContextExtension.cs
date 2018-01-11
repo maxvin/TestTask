@@ -13,12 +13,7 @@ namespace TestTask.WebUI.Components.Extensions
         public static void AddAppDbContext(this IServiceCollection services, string connectionString)
         {
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
-        }
-
-        public static void AddIdentityContext(this IServiceCollection services, string connectionString)
-        {
-            services.AddDbContext<ApplicationIdentityContext>(options => options.UseSqlServer(connectionString));
-            services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<ApplicationIdentityContext>();
+            services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
         }
 
         public static void AddtestTaskServices(this IServiceCollection services)

@@ -9,9 +9,6 @@ namespace TestTask.Domain.DbEntities
 {
     public class User : IdentityUser
     {
-        [Key]
-        public int UserId { get; set; }
-
         [Required]
         public string Name { get; set; }
 
@@ -20,14 +17,7 @@ namespace TestTask.Domain.DbEntities
         public string Mobile { get; set; }
 
         [Required]
-        [DataType(DataType.EmailAddress)]
-        public string Mail { get; set; }
-
-        [Required]
-        [DataType(DataType.Password)]
-        public string Password { get; set; }
-
-        public virtual Department Department { get; set; }
+        public Department Department { get; set; }
 
         public bool IsUserManager { get; set; }
 

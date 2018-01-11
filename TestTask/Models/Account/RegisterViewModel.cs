@@ -16,6 +16,15 @@ namespace TestTask.Domain.DbEntities.AccountEntities
         public int DepartmentId { get; set; }
 
         [Required]
+        [RegularExpression(@"^[0-9]*$")]
+        [StringLength(15, MinimumLength = 5)]
+        public string Mobile { get; set; }
+
+        [Required]
+        [DataType(DataType.EmailAddress)]
+        public string Email { get; set; }
+
+        [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 

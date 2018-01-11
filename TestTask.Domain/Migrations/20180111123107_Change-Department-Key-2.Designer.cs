@@ -8,12 +8,13 @@ using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 using TestTask.Domain;
 
-namespace TestTask.Domain.Migrations.ApplicationIdentity
+namespace TestTask.Domain.Migrations
 {
-    [DbContext(typeof(ApplicationIdentityContext))]
-    partial class ApplicationIdentityContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(ApplicationDbContext))]
+    [Migration("20180111123107_Change-Department-Key-2")]
+    partial class ChangeDepartmentKey2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -128,6 +129,75 @@ namespace TestTask.Domain.Migrations.ApplicationIdentity
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("TestTask.Domain.DbEntities.Comment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("CustomerId");
+
+                    b.Property<string>("Text")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
+
+                    b.ToTable("Comments");
+                });
+
+            modelBuilder.Entity("TestTask.Domain.DbEntities.Contact", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("CustomerId");
+
+                    b.Property<string>("Mail")
+                        .IsRequired();
+
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.Property<string>("Phone")
+                        .IsRequired();
+
+                    b.Property<string>("Role")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
+
+                    b.ToTable("Contacts");
+                });
+
+            modelBuilder.Entity("TestTask.Domain.DbEntities.Customer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Address")
+                        .IsRequired();
+
+                    b.Property<string>("Email")
+                        .IsRequired();
+
+                    b.Property<bool>("IsMunicipality");
+
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.Property<int>("NumberOfSchools");
+
+                    b.Property<string>("Phone")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Customers");
+                });
+
             modelBuilder.Entity("TestTask.Domain.DbEntities.Department", b =>
                 {
                     b.Property<int>("Id")
@@ -136,18 +206,16 @@ namespace TestTask.Domain.Migrations.ApplicationIdentity
                     b.Property<string>("Address")
                         .IsRequired();
 
+                    b.Property<int?>("CustomerId");
+
                     b.Property<string>("Name")
                         .IsRequired();
 
-                    b.Property<string>("User");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("User")
-                        .IsUnique()
-                        .HasFilter("[User] IS NOT NULL");
+                    b.HasIndex("CustomerId");
 
-                    b.ToTable("Department");
+                    b.ToTable("Departments");
                 });
 
             modelBuilder.Entity("TestTask.Domain.DbEntities.User", b =>
@@ -160,10 +228,16 @@ namespace TestTask.Domain.Migrations.ApplicationIdentity
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
+                    b.Property<int?>("CustomerId");
+
+                    b.Property<int>("DepartmentId");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed");
+
+                    b.Property<bool>("IsUserManager");
 
                     b.Property<bool>("LockoutEnabled");
 
@@ -184,9 +258,6 @@ namespace TestTask.Domain.Migrations.ApplicationIdentity
                     b.Property<string>("NormalizedUserName")
                         .HasMaxLength(256);
 
-                    b.Property<string>("Password")
-                        .IsRequired();
-
                     b.Property<string>("PasswordHash");
 
                     b.Property<string>("PhoneNumber");
@@ -197,14 +268,14 @@ namespace TestTask.Domain.Migrations.ApplicationIdentity
 
                     b.Property<bool>("TwoFactorEnabled");
 
-                    b.Property<int>("UserId");
-
                     b.Property<string>("UserName")
                         .HasMaxLength(256);
 
                     b.HasKey("Id");
 
-                    b.HasAlternateKey("UserId");
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("DepartmentId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasName("EmailIndex");
@@ -262,11 +333,37 @@ namespace TestTask.Domain.Migrations.ApplicationIdentity
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("TestTask.Domain.DbEntities.Comment", b =>
+                {
+                    b.HasOne("TestTask.Domain.DbEntities.Customer")
+                        .WithMany("Comments")
+                        .HasForeignKey("CustomerId");
+                });
+
+            modelBuilder.Entity("TestTask.Domain.DbEntities.Contact", b =>
+                {
+                    b.HasOne("TestTask.Domain.DbEntities.Customer")
+                        .WithMany("Contacts")
+                        .HasForeignKey("CustomerId");
+                });
+
             modelBuilder.Entity("TestTask.Domain.DbEntities.Department", b =>
                 {
-                    b.HasOne("TestTask.Domain.DbEntities.User", "Manager")
-                        .WithOne("Department")
-                        .HasForeignKey("TestTask.Domain.DbEntities.Department", "User");
+                    b.HasOne("TestTask.Domain.DbEntities.Customer")
+                        .WithMany("Departments")
+                        .HasForeignKey("CustomerId");
+                });
+
+            modelBuilder.Entity("TestTask.Domain.DbEntities.User", b =>
+                {
+                    b.HasOne("TestTask.Domain.DbEntities.Customer")
+                        .WithMany("Users")
+                        .HasForeignKey("CustomerId");
+
+                    b.HasOne("TestTask.Domain.DbEntities.Department", "Department")
+                        .WithMany()
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

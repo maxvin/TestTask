@@ -34,7 +34,6 @@ namespace TestTask
             services.AddMvc();
             services.AddtestTaskServices();
             services.AddAppDbContext(_configuration.GetConnectionString("AppMainConnection"));
-            services.AddIdentityContext(_configuration.GetConnectionString("AppMainConnection"));
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

@@ -11,9 +11,10 @@ using TestTask.Domain;
 namespace TestTask.Domain.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180111131522_Add-Regulars-For-Mobile")]
+    partial class AddRegularsForMobile
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -241,6 +242,9 @@ namespace TestTask.Domain.Migrations
                     b.Property<bool>("LockoutEnabled");
 
                     b.Property<DateTimeOffset?>("LockoutEnd");
+
+                    b.Property<string>("Mail")
+                        .IsRequired();
 
                     b.Property<string>("Mobile")
                         .IsRequired();

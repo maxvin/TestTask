@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace TestTask.Domain.Migrations
 {
-    public partial class NewFields : Migration
+    public partial class AddRegularsForMobile : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

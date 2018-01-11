@@ -10,17 +10,14 @@ namespace TestTask.Domain.DbServices.UserService
     public class UserDbService : IUserDbService
     {
         private readonly ApplicationDbContext _appDbContext;
-        private readonly ApplicationIdentityContext _appIdentityDbContext;
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
 
         public UserDbService(ApplicationDbContext appDbContext,
-            ApplicationIdentityContext appIdentityDbContext,
             UserManager<User> userManager, 
             SignInManager<User> signInManager)
         {
             _appDbContext = appDbContext;
-            _appIdentityDbContext = appIdentityDbContext;
             _userManager = userManager;
             _signInManager = signInManager;
         }

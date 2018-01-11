@@ -11,9 +11,10 @@ using TestTask.Domain;
 namespace TestTask.Domain.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180111122917_Change-Department-KEy")]
+    partial class ChangeDepartmentKEy
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -229,7 +230,7 @@ namespace TestTask.Domain.Migrations
 
                     b.Property<int?>("CustomerId");
 
-                    b.Property<int>("DepartmentId");
+                    b.Property<int?>("DepartmentId");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256);
@@ -241,6 +242,9 @@ namespace TestTask.Domain.Migrations
                     b.Property<bool>("LockoutEnabled");
 
                     b.Property<DateTimeOffset?>("LockoutEnd");
+
+                    b.Property<string>("Mail")
+                        .IsRequired();
 
                     b.Property<string>("Mobile")
                         .IsRequired();
@@ -358,8 +362,7 @@ namespace TestTask.Domain.Migrations
 
                     b.HasOne("TestTask.Domain.DbEntities.Department", "Department")
                         .WithMany()
-                        .HasForeignKey("DepartmentId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("DepartmentId");
                 });
 #pragma warning restore 612, 618
         }
