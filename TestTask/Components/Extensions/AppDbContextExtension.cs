@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using TestTask.Domain;
 using TestTask.Domain.DbEntities;
+using TestTask.Domain.DbServices.CustomerService;
 using TestTask.Domain.DbServices.DepartmentService;
 using TestTask.Domain.DbServices.UserService;
 
@@ -20,6 +21,7 @@ namespace TestTask.WebUI.Components.Extensions
         {
             services.AddTransient(typeof(IUserDbService), typeof(UserDbService));
             services.AddTransient(typeof(IDepartmentService), typeof(DepartmentService));
+            services.AddTransient(typeof(ICustomerService), typeof(CustomerService));
 
         }
     }

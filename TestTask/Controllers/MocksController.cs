@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,17 @@ namespace TestTask.WebUI.Controllers
     {
         private readonly IDepartmentService _departmentService;
 
-        public MocksController(IDepartmentService departmentService)
+        private readonly UserManager<User> _userManager;
+
+        private readonly RoleManager<IdentityRole> _roleManager;
+
+        public MocksController(IDepartmentService departmentService, 
+            UserManager<User> userManager,
+            RoleManager<IdentityRole> roleManager)
         {
             _departmentService = departmentService;
+            _userManager = userManager;
+            _roleManager = roleManager;
         }
 
         public ContentResult MockDepartments()
@@ -30,6 +39,16 @@ namespace TestTask.WebUI.Controllers
             }
 
             return Content($"Mocking is {results.Any(res => res != false)}");
+        }
+
+
+        public async Task<ContentResult> AddAdminRole()
+        {
+            var user = _userManager.Users.First();
+            var result = await _roleManager.CreateAsync(new IdentityRole { Id = "Admin", Name = "Admin" });
+            var roleResult = await _userManager.AddToRoleAsync(user, "Admin");
+
+            return Content("Successfull ${result}");
         }
     }
 }

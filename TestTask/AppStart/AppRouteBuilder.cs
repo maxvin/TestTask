@@ -13,7 +13,7 @@ namespace TestTask.AppStart
         {
             routes.MapRoute(
                     name: "default",
-                    template: "{controller=Site}/{action=Index}/{id?}");
+                    template: "{controller=Account}/{action=Login}/{id?}");
         }
     }
 }
