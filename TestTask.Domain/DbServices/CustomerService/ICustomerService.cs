@@ -13,6 +13,6 @@ namespace TestTask.Domain.DbServices.CustomerService
 
         bool RemoveCustomerById(int id);
 
-        Customer GetInfoById(int id);
+        Customer GetCustomerById(int id);
     }
 }

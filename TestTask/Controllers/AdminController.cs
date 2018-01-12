@@ -17,10 +17,14 @@ namespace TestTask.WebUI.Controllers
         {
             _customerService = customerService;
         }
+
+
         public IActionResult Index()
         {
             return View(_customerService.GetAllCustomers());
         }
+
+        // Add
 
         [HttpGet]
         public IActionResult Create()
@@ -34,10 +38,46 @@ namespace TestTask.WebUI.Controllers
             if (ModelState.IsValid)
             {
                 var savingResult = _customerService.AddNewCustomer(customer);
-                TempData["CustomerAddingResult"] = savingResult ? "Customer was added successfully!" : "Error!";
+                TempData["CustomerResult"] = savingResult ? "Customer was added successfully!" : "Error!";
+                return RedirectToAction("Index", "Admin");
             }
+            return View(customer);
+        }
 
-            return RedirectToAction("Index","Site");
+        // Edit
+
+        [HttpGet]
+        public IActionResult EditCustomer(int id)
+        {
+            return View(_customerService.GetCustomerById(id));
+        }
+
+        [HttpPost]
+        public IActionResult EditCustomer(Customer customer)
+        {
+            if (ModelState.IsValid)
+            {
+                var savingResult = _customerService.AddNewCustomer(customer);
+                TempData["CustomerResult"] = savingResult ? "Customer was edited successfully!" : "Error!";
+                return RedirectToAction("Index", "Admin");
+            }
+            return View(customer);
+        }
+
+        // Remove
+
+        public IActionResult RemoveCustomer(int id)
+        {
+            try
+            {
+                var deleteResult = _customerService.RemoveCustomerById(id);
+                TempData["CustomerResult"] = deleteResult ? "Customer was removed successfully!" : "Error!";
+                return RedirectToAction("Index", "Admin");
+            }
+            catch
+            {
+                return RedirectToAction("Index", "Admin");
+            }
         }
 
     }

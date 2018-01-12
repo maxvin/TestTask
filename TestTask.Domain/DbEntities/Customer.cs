@@ -27,7 +27,7 @@ namespace TestTask.Domain.DbEntities
 
         public bool IsMunicipality { get; set; }
 
-        public int NumberOfSchools { get; set; }
+        public int? NumberOfSchools { get; set; }
 
         public virtual List<Comment> Comments { get; set; }
 

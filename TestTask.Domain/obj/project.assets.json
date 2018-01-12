@@ -4073,6 +4073,9 @@
   },
   "project": {
     "version": "1.0.0",
+    "restoreSettings": {
+      "hideWarningsAndErrors": true
+    },
     "restore": {
       "projectUniqueName": "C:\\Users\\VBurdziakivskyi.SEO\\Documents\\TestTask\\TestTask.Domain\\TestTask.Domain.csproj",
       "projectName": "TestTask.Domain",

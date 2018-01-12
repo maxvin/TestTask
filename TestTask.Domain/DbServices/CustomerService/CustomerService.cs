@@ -34,7 +34,7 @@ namespace TestTask.Domain.DbServices.CustomerService
             return _appDbContext.Customers.ToList();
         }
 
-        public Customer GetInfoById(int id)
+        public Customer GetCustomerById(int id)
         {
             return _appDbContext.Customers.FirstOrDefault(e => e.Id == id);
         }
@@ -45,6 +45,7 @@ namespace TestTask.Domain.DbServices.CustomerService
             {
                 var customer = _appDbContext.Customers.FirstOrDefault(e => e.Id == id);
                 _appDbContext.Customers.Remove(customer);
+                _appDbContext.SaveChanges();
                 return true;
             }
             catch

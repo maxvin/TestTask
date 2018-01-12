@@ -43,6 +43,8 @@ namespace TestTask
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
+
             app.UseAuthentication();
 
             app.GetServicesByRoute("/AllServices", _services);

@@ -66,12 +66,16 @@ namespace TestTask.WebUI.Controllers
         }
 
         [HttpGet]
-        public IActionResult Login() => View();
+        public IActionResult Login()
+        {
+            if (User.Identity.IsAuthenticated && User.IsInRole("Admin")) return RedirectToAction("Index", "Admin");
+            if (User.Identity.IsAuthenticated) return RedirectToAction("Index", "User");
+            return View();
+        }
 
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-            if (User.Identity.IsAuthenticated) return RedirectToAction("Index","Admin");
             if (ModelState.IsValid)
             {
                 var result = await _signInManager.PasswordSignInAsync(model.Username, model.Password, true, false);
@@ -86,6 +90,17 @@ namespace TestTask.WebUI.Controllers
             }
             return View();
         }
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            _logger.LogInformation("User logged out.");
+            return RedirectToAction(nameof(AccountController.Login), "Home");
+        }
+
 
     }
 }
