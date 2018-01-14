@@ -21,18 +21,22 @@ namespace TestTask.WebUI.Controllers
 
         private readonly SignInManager<User> _signInManager;
 
+        private readonly UserManager<User> _userManager;
+
         private readonly IDepartmentService _departmentService;
 
 
         public AccountController(IUserDbService userDbService,
             IDepartmentService departmentService,
             SignInManager<User> signInManager,
-            ILogger<AccountController> logger)
+            ILogger<AccountController> logger,
+            UserManager<User> userManager)
         {
             _userDbService = userDbService;
             _departmentService = departmentService;
             _signInManager = signInManager;
             _logger = logger;
+            _userManager = userManager;
         }
 
 
@@ -52,8 +56,12 @@ namespace TestTask.WebUI.Controllers
                 var result = await _signInManager.PasswordSignInAsync(model.Username, model.Password, true, false);
                 if (result.Succeeded)
                 {
+
+                    var user = await _userManager.FindByNameAsync(model.Username);
+                    var isInRole = await _userManager.IsInRoleAsync(user, "Admin");
+
                     _logger.LogInformation("User logged in.");
-                    if(User.HasClaim(ClaimTypes.Role, "Admin")) return RedirectToAction("Index", "Admin");
+                    if(isInRole) return RedirectToAction("Index", "Admin");
                     return RedirectToAction("Index", "Site");
                 }
 
