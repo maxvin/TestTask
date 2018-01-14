@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TestTask.Domain.DbEntities;
 using TestTask.Domain.DbServices.DepartmentService;
+using TestTask.Domain.DbServices.UserService;
 
 namespace TestTask.WebUI.Controllers
 {
@@ -13,17 +14,21 @@ namespace TestTask.WebUI.Controllers
     {
         private readonly IDepartmentService _departmentService;
 
+        private readonly IUserDbService _userService;
+
         private readonly UserManager<User> _userManager;
 
         private readonly RoleManager<IdentityRole> _roleManager;
 
         public MocksController(IDepartmentService departmentService, 
             UserManager<User> userManager,
-            RoleManager<IdentityRole> roleManager)
+            RoleManager<IdentityRole> roleManager,
+            IUserDbService userService)
         {
             _departmentService = departmentService;
             _userManager = userManager;
             _roleManager = roleManager;
+            _userService = userService;
         }
 
         public ContentResult MockDepartments()
@@ -44,7 +49,7 @@ namespace TestTask.WebUI.Controllers
 
         public async Task<ContentResult> AddAdminRole()
         {
-            var user = _userManager.Users.First();
+            var user = _userService.GetUserInfoByUserName("Admin");
             var result = await _roleManager.CreateAsync(new IdentityRole { Id = "Admin", Name = "Admin" });
             var roleResult = await _userManager.AddToRoleAsync(user, "Admin");
 

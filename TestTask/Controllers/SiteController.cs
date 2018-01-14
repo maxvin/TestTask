@@ -13,7 +13,7 @@ namespace TestTask.Controllers
     {
         public ContentResult Index()
         {
-            return Content("hello world");
+            return Content($"hello user {User.Identity.Name}");
         }
 
     }

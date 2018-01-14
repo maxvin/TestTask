@@ -9,6 +9,7 @@ using TestTask.Domain.DbServices.DepartmentService;
 using TestTask.WebUI.Models.Account;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
+using System.Security.Claims;
 
 namespace TestTask.WebUI.Controllers
 {
@@ -34,41 +35,11 @@ namespace TestTask.WebUI.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
-        public IActionResult Register()
-        {
-            ViewBag.DepartmentsList = new SelectList(_departmentService.GetDepartments().ToList(), "Id", "Name");
-            return View();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Register(RegisterViewModel registerModel) {
-
-            var departments = _departmentService.GetDepartments();
-
-            if (ModelState.IsValid)
-            {
-                var registerDepartment = departments.First(e=>e.Id == registerModel.DepartmentId);
-                User user = new User { UserName = registerModel.UserName,
-                    Department = registerDepartment,
-                    Email = registerModel.Email,
-                    Mobile = registerModel.Mobile,
-                    Name = registerModel.UserName
-                };
-                var result = await _userDbService.AddUser(user, registerModel.Password);
-
-                if (result.Succeeded) return RedirectToAction("Site", "Index");
-            }
-
-            ViewBag.DepartmentsList = new SelectList(departments.ToList(), "Id", "Name"); ;
-            return View(registerModel);
-
-        }
 
         [HttpGet]
         public IActionResult Login()
         {
-            if (User.Identity.IsAuthenticated && User.IsInRole("Admin")) return RedirectToAction("Index", "Admin");
+            if (User.Identity.IsAuthenticated && User.HasClaim(ClaimTypes.Role, "Admin")) return RedirectToAction("Index", "Admin");
             if (User.Identity.IsAuthenticated) return RedirectToAction("Index", "User");
             return View();
         }
@@ -82,7 +53,8 @@ namespace TestTask.WebUI.Controllers
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    return RedirectToAction("Index", "Admin");
+                    if(User.HasClaim(ClaimTypes.Role, "Admin")) return RedirectToAction("Index", "Admin");
+                    return RedirectToAction("Index", "Site");
                 }
 
                 ModelState.AddModelError(string.Empty, "Invalid login attempt.");
@@ -98,7 +70,7 @@ namespace TestTask.WebUI.Controllers
         {
             await _signInManager.SignOutAsync();
             _logger.LogInformation("User logged out.");
-            return RedirectToAction(nameof(AccountController.Login), "Home");
+            return RedirectToAction(nameof(AccountController.Login), "Account");
         }
 
 

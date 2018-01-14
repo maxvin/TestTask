@@ -6128,17 +6128,17 @@
       ]
     },
     "Microsoft.CodeAnalysis.Analyzers/1.1.0": {
-      "sha512": "HS3iRWZKcUw/8eZ/08GXKY2Bn7xNzQPzf8gRPHGSowX7u7XXu9i9YEaBeBNKUXWfI7qjvT2zXtLUvbN0hds8vg==",
+      "sha512": "jA+Th95WABL/rxx9OoIiyHvsMy5GJjfPUdT+5qg8FnBxdiSW9JC7xeEBhnk9VbUKInx1HgjdNsfhrQVrw3v91w==",
       "type": "package",
       "path": "microsoft.codeanalysis.analyzers/1.1.0",
       "files": [
+        "Microsoft.CodeAnalysis.Analyzers.1.1.0.nupkg.sha512",
+        "Microsoft.CodeAnalysis.Analyzers.nuspec",
         "ThirdPartyNotices.rtf",
         "analyzers/dotnet/cs/Microsoft.CodeAnalysis.Analyzers.dll",
         "analyzers/dotnet/cs/Microsoft.CodeAnalysis.CSharp.Analyzers.dll",
         "analyzers/dotnet/vb/Microsoft.CodeAnalysis.Analyzers.dll",
         "analyzers/dotnet/vb/Microsoft.CodeAnalysis.VisualBasic.Analyzers.dll",
-        "microsoft.codeanalysis.analyzers.1.1.0.nupkg.sha512",
-        "microsoft.codeanalysis.analyzers.nuspec",
         "tools/install.ps1",
         "tools/uninstall.ps1"
       ]
@@ -10249,10 +10249,12 @@
       ]
     },
     "System.Linq.Queryable/4.0.1": {
-      "sha512": "Yn/WfYe9RoRfmSLvUt2JerP0BTGGykCZkQPgojaxgzF2N0oPo+/AhB8TXOpdCcNlrG3VRtsamtK2uzsp3cqRVw==",
+      "sha512": "XLjTIQcqslH/lSWIqkMDYqaoH0KZBhh/GocbkdT4BP8OxBY7YcJRypBqbBNDVhHf+FcoJ5JeOwn6NU1qrQQSIQ==",
       "type": "package",
       "path": "system.linq.queryable/4.0.1",
       "files": [
+        "System.Linq.Queryable.4.0.1.nupkg.sha512",
+        "System.Linq.Queryable.nuspec",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/monoandroid10/_._",
@@ -10300,9 +10302,7 @@
         "ref/xamarinios10/_._",
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
-        "system.linq.queryable.4.0.1.nupkg.sha512",
-        "system.linq.queryable.nuspec"
+        "ref/xamarinwatchos10/_._"
       ]
     },
     "System.Net.Http/4.3.0": {
@@ -13196,7 +13196,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\VBurdziakivskyi.SEO\\.nuget\\packages\\": {},
+    "C:\\Users\\Burdziakivkyi\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -13205,17 +13205,17 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\VBurdziakivskyi.SEO\\Documents\\TestTask\\TestTask\\TestTask.WebUI.csproj",
+      "projectUniqueName": "C:\\Users\\Burdziakivkyi\\Desktop\\Sandbox\\TestTaskGit\\TestTask\\TestTask.WebUI.csproj",
       "projectName": "TestTask.WebUI",
-      "projectPath": "C:\\Users\\VBurdziakivskyi.SEO\\Documents\\TestTask\\TestTask\\TestTask.WebUI.csproj",
-      "packagesPath": "C:\\Users\\VBurdziakivskyi.SEO\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\VBurdziakivskyi.SEO\\Documents\\TestTask\\TestTask\\obj\\",
+      "projectPath": "C:\\Users\\Burdziakivkyi\\Desktop\\Sandbox\\TestTaskGit\\TestTask\\TestTask.WebUI.csproj",
+      "packagesPath": "C:\\Users\\Burdziakivkyi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Burdziakivkyi\\Desktop\\Sandbox\\TestTaskGit\\TestTask\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\VBurdziakivskyi.SEO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Burdziakivkyi\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -13223,13 +13223,13 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://www.nuget.org/api/v2/": {}
       },
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\VBurdziakivskyi.SEO\\Documents\\TestTask\\TestTask.Domain\\TestTask.Domain.csproj": {
-              "projectPath": "C:\\Users\\VBurdziakivskyi.SEO\\Documents\\TestTask\\TestTask.Domain\\TestTask.Domain.csproj"
+            "C:\\Users\\Burdziakivkyi\\Desktop\\Sandbox\\TestTaskGit\\TestTask.Domain\\TestTask.Domain.csproj": {
+              "projectPath": "C:\\Users\\Burdziakivkyi\\Desktop\\Sandbox\\TestTaskGit\\TestTask.Domain\\TestTask.Domain.csproj"
             }
           }
         }
@@ -13243,22 +13243,22 @@
     "frameworks": {
       "netcoreapp2.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.All": {
-            "target": "Package",
-            "version": "[2.0.3, )"
-          },
-          "Microsoft.NETCore.App": {
-            "target": "Package",
-            "version": "[2.0.0, )",
-            "autoReferenced": true
-          },
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
-            "version": "[2.0.0, )"
+            "version": "2.0.0"
           },
           "Microsoft.jQuery.Unobtrusive.Validation": {
             "target": "Package",
-            "version": "[3.2.3, )"
+            "version": "3.2.3"
+          },
+          "Microsoft.NETCore.App": {
+            "target": "Package",
+            "version": "2.0.0",
+            "autoReferenced": true
+          },
+          "Microsoft.AspNetCore.All": {
+            "target": "Package",
+            "version": "2.0.3"
           }
         },
         "imports": [

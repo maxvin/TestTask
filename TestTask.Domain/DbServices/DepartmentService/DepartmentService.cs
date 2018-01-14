@@ -34,7 +34,7 @@ namespace TestTask.Domain.DbServices.DepartmentService
                 _appDbContext.SaveChanges();
                 return true;
             }
-            catch
+            catch(Exception e)
             {
                 return false;
             }

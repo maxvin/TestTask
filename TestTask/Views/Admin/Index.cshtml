@@ -2,10 +2,16 @@
 @{
     ViewData["Title"] = "Index";
 }
-<h2>Index</h2>
+<h2>Customers</h2>
+
+<hr />
+
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="CreateCustomer">Create New Customer</a> |
+    <a asp-action="CreateUser">Create New User</a>
 </p>
+
+<hr/>
 
 @if (!string.IsNullOrEmpty(TempData["CustomerResult"] as string))
 {
@@ -69,7 +75,8 @@
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "EditCustomer", new {  id=item.Id }) |
-                    @Html.ActionLink("Delete", "RemoveCustomer", new {  id=item.Id })
+                    @Html.ActionLink("Delete", "RemoveCustomer", new {  id=item.Id }) |
+                    @Html.ActionLink("Info", "GetCustomerInformation", new { id=item.Id })
                 </td>
             </tr>
         }

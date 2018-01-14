@@ -5,7 +5,7 @@ using System.Text;
 
 namespace TestTask.Domain.DbEntities.AccountEntities
 {
-    public class RegisterViewModel
+    public class RegisterUserViewModel
     {
         [Required]
         [Display(Name = "UserName")]

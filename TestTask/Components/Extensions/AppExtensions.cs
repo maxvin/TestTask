@@ -1,11 +1,15 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestTask.Domain.DbEntities;
+using TestTask.Domain.DbServices.DepartmentService;
+using TestTask.Domain.DbServices.UserService;
 
 namespace TestTask.WebUI.Components.Extensions
 {
@@ -35,6 +39,41 @@ namespace TestTask.WebUI.Components.Extensions
                 });
 
             });
+        }
+
+        public static void SetAdminCredentials(this IApplicationBuilder app, IServiceProvider serviceProvider)
+        {
+            var userService = serviceProvider.GetService<IUserDbService>();
+            var departmentService = serviceProvider.GetService<IDepartmentService>();
+            var roleManager = serviceProvider.GetService<RoleManager<IdentityRole>>();
+            var userManager = serviceProvider.GetService<UserManager<User>>();
+
+            var adminUser = userService.GetUserInfoByUserName("Admin");
+            if(adminUser == null)
+            {
+                var adminDepartment = departmentService.GetDepartments().FirstOrDefault();
+                if (adminDepartment == null)
+                {
+                    departmentService.AddDepartment(new Department {
+                        Name = "Department name 1",
+                        Address = "Department name 2" });
+                }
+
+                userService.AddUser(new User {
+                    UserName = "Admin",
+                    Name = "Admin",
+                    Mobile = "123123123",
+                    Department = adminDepartment,
+                }, "P@ssw0rd");
+
+                var adminRole = roleManager.Roles.FirstOrDefault(e => e.Id == "Admin");
+                if (adminRole == null)
+                {
+                    roleManager.CreateAsync(new IdentityRole { Id = "Admin", Name = "Admin" });
+                }
+
+                userManager.AddToRoleAsync(userService.GetUserInfoByUserName("Admin"), "Admin");
+            }
         }
     }
 }

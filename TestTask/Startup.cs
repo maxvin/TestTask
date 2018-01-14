@@ -36,7 +36,7 @@ namespace TestTask
             services.AddAppDbContext(_configuration.GetConnectionString("AppMainConnection"));
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -44,13 +44,12 @@ namespace TestTask
             }
 
             app.UseStaticFiles();
-
             app.UseAuthentication();
+            app.SetAdminCredentials(serviceProvider);
 
             app.GetServicesByRoute("/AllServices", _services);
             app.UseMvc(AppRouteBuilder.UseRouters);
             
-
         }
     }
 }

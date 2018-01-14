@@ -29,13 +29,17 @@ namespace TestTask.Domain.DbEntities
 
         public int? NumberOfSchools { get; set; }
 
-        public virtual List<Comment> Comments { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
 
-        public virtual List<Contact> Contacts { get; set; }
+        public virtual ICollection<Contact> Contacts { get; set; }
 
-        public virtual List<User> Users { get; set; }
+        public virtual ICollection<User> Users { get; set; }
 
-        public virtual List<Department> Departments { get; set; }
+        public virtual ICollection<Department> Departments { get; set; }
 
+
+        public Customer()
+        {
+        }
     }
 }

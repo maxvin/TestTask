@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using TestTask.Domain.DbEntities;
+using System.Linq;
 
 namespace TestTask.Domain.DbServices.UserService
 {
@@ -35,7 +36,7 @@ namespace TestTask.Domain.DbServices.UserService
 
         public User GetUserInfoByUserName(string userName)
         {
-            throw new NotImplementedException();
+            return _appDbContext.Users.FirstOrDefault(e=>e.UserName == userName);
         }
     }
 }

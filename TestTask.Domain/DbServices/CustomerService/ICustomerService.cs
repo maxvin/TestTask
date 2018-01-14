@@ -11,8 +11,13 @@ namespace TestTask.Domain.DbServices.CustomerService
 
         bool AddNewCustomer(Customer customer);
 
+        bool UpdateCustomer(Customer customer);
+
         bool RemoveCustomerById(int id);
 
         Customer GetCustomerById(int id);
+
+        bool AddContact(int customerId, Contact contact);
+        ICollection<Contact> GetCustomerContactsById(int customerId);
     }
 }
