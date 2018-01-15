@@ -9,6 +9,8 @@ namespace TestTask.Domain.DbServices.DepartmentService
     {
         IList<Department> GetDepartments();
 
+        IList<Department> GetCustomerDepartments(int customerId);
+
         IList<Department> GetDepartments(int count);
 
         Boolean AddDepartment(Department department);

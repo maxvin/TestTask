@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -40,6 +42,9 @@ namespace TestTask.Domain.DbServices.DepartmentService
             }
         }
 
-
+        public IList<Department> GetCustomerDepartments(int customerId)
+        {
+            return _appDbContext.Customers.Include(e => e.Departments).First(e => e.Id == customerId).Departments.ToList();
+        }
     }
 }

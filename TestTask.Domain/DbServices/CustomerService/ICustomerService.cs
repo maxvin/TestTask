@@ -18,6 +18,11 @@ namespace TestTask.Domain.DbServices.CustomerService
         Customer GetCustomerById(int id);
 
         bool AddContact(int customerId, Contact contact);
+
         ICollection<Contact> GetCustomerContactsById(int customerId);
+
+        void AddCustomerUser(int customerId, User user);
+
+        void AddCustomerDepartment(int customerId, Department department);
     }
 }

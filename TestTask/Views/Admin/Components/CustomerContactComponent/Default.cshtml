@@ -1,6 +1,10 @@
 ﻿@model IEnumerable<TestTask.Domain.DbEntities.Contact>
 
 <p>
+    <h4>Contacts</h4>
+</p>
+
+<p>
     <a asp-action="CreateCustomerContact" asp-controller="Admin" asp-route-customerId="@ViewBag.customerId">Add Contacts</a>
 </p>
 <table class="table">

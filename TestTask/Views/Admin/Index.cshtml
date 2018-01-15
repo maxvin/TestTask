@@ -7,8 +7,7 @@
 <hr />
 
 <p>
-    <a asp-action="CreateCustomer">Create New Customer</a> |
-    <a asp-action="CreateUser">Create New User</a>
+    <a asp-action="CreateCustomer">Create New Customer</a>
 </p>
 
 <hr/>
@@ -76,7 +75,7 @@
                 <td>
                     @Html.ActionLink("Edit", "EditCustomer", new {  id=item.Id }) |
                     @Html.ActionLink("Delete", "RemoveCustomer", new {  id=item.Id }) |
-                    @Html.ActionLink("Info", "GetCustomerInformation", new { id=item.Id })
+                    @Html.ActionLink("Info", "GetCustomerInformation", new { customerId = item.Id })
                 </td>
             </tr>
         }

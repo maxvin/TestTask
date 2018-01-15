@@ -62,7 +62,7 @@ namespace TestTask.WebUI.Controllers
 
                     _logger.LogInformation("User logged in.");
                     if(isInRole) return RedirectToAction("Index", "Admin");
-                    return RedirectToAction("Index", "Site");
+                    return RedirectToAction("Index", "User");
                 }
 
                 ModelState.AddModelError(string.Empty, "Invalid login attempt.");

@@ -14,5 +14,7 @@ namespace TestTask.Domain.DbServices.UserService
         User GetUserInfoByUserName(string userName);
 
         User GetUserInfoById(int userId);
+
+        List<User> GetUsersByCustomerId(int customerId);
     }
 }

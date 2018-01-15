@@ -6,6 +6,12 @@
 
 <h2>Customer information</h2>
 
+<ul class="nav nav-tabs nav-justified">
+    <li class="active"><a href="#">General info</a></li>
+    <li><a asp-action="index" asp-controller="userinfo" asp-route-customerId="@Context.Request.Query["customerId"]">Users</a></li>
+    <li><a asp-action="index" asp-controller="departments" asp-route-customerId="@Context.Request.Query["customerId"]">Departments</a></li>
+</ul>
+
 <div>
     <h4>Customer</h4>
     <hr />

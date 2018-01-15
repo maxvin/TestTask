@@ -70,54 +70,12 @@ namespace TestTask.WebUI.Controllers
             {
                 var savingResult = _customerService.AddContact(customerId, contact);
                 TempData["CustomerResult"] = savingResult ? "Contact was added successfully!" : "Error!";
-                return RedirectToAction("GetCustomerInformation", "Admin", new { id = customerId });
+                return RedirectToAction("GetCustomerInformation", "Admin", new { customerId = customerId });
             }
 
-            ViewBag.CustomerId = customerId;
+            ViewBag.customerId = customerId;
             return View(contact);
         }
-
-
-        [HttpGet]
-        public IActionResult CreateUser()
-        {
-            ViewBag.DepartmentsList = new SelectList(_departmentService.GetDepartments().ToList(), "Id", "Name");
-            return View();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> CreateUser(RegisterUserViewModel registerModel)
-        {
-
-            var departments = _departmentService.GetDepartments();
-
-            if (ModelState.IsValid)
-            {
-                var registerDepartment = departments.First(e => e.Id == registerModel.DepartmentId);
-                User user = new User
-                {
-                    UserName = registerModel.UserName,
-                    Department = registerDepartment,
-                    Email = registerModel.Email,
-                    Mobile = registerModel.Mobile,
-                    Name = registerModel.UserName
-                };
-                var result = await _userDbService.AddUser(user, registerModel.Password);
-
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError("", error.Description);
-                }
-
-                if (result.Succeeded) return RedirectToAction("Site", "Index");
-            }
-
-            ViewBag.DepartmentsList = new SelectList(departments.ToList(), "Id", "Name"); ;
-            return View(registerModel);
-
-        }
-
-
 
         // Edit
 
@@ -157,9 +115,9 @@ namespace TestTask.WebUI.Controllers
 
         // Info
         [HttpGet]
-        public IActionResult GetCustomerInformation(int id)
+        public IActionResult GetCustomerInformation(int customerId)
         {
-            return View(_customerService.GetCustomerById(id));
+            return View(_customerService.GetCustomerById(customerId));
         }
 
     }

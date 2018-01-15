@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TestTask.Domain.DbEntities;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace TestTask.Domain.DbServices.UserService
 {
@@ -37,6 +38,11 @@ namespace TestTask.Domain.DbServices.UserService
         public User GetUserInfoByUserName(string userName)
         {
             return _appDbContext.Users.FirstOrDefault(e=>e.UserName == userName);
+        }
+
+        public List<User> GetUsersByCustomerId(int customerId)
+        {
+            return _appDbContext.Customers.Include(e => e.Users).First(e => e.Id == customerId).Users.ToList();
         }
     }
 }

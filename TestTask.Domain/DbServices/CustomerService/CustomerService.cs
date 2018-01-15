@@ -4,6 +4,7 @@ using System.Text;
 using TestTask.Domain.DbEntities;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace TestTask.Domain.DbServices.CustomerService
 {
@@ -11,9 +12,13 @@ namespace TestTask.Domain.DbServices.CustomerService
     {
         private readonly ApplicationDbContext _appDbContext;
 
-        public CustomerService(ApplicationDbContext appDbContext)
+        private readonly UserManager<User> _userManager;
+
+
+        public CustomerService(ApplicationDbContext appDbContext, UserManager<User> userManager)
         {
             _appDbContext = appDbContext;
+            _userManager = userManager;
         }
 
         public bool AddContact(int customerId, Contact contact)
@@ -34,6 +39,23 @@ namespace TestTask.Domain.DbServices.CustomerService
                 }
 
             }
+        }
+
+        public void AddCustomerDepartment(int customerId, Department department)
+        {
+            var customer = _appDbContext.Customers.Include(e => e.Departments).First(e => e.Id == customerId);
+            customer.Departments.Add(department);
+            _appDbContext.Update(customer);
+            _appDbContext.SaveChanges();
+        }
+
+        public void AddCustomerUser(int customerId, User user)
+        {
+            var customer = _appDbContext.Customers.Include(e => e.Users).First(e => e.Id == customerId);
+
+            customer.Users.Add(user);
+            _appDbContext.Update(customer);
+            _appDbContext.SaveChanges();
         }
 
         public bool AddNewCustomer(Customer customer)
