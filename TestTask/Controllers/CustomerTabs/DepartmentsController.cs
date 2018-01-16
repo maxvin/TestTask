@@ -14,7 +14,7 @@ using TestTask.WebUI.Components.ActionFilters;
 
 namespace TestTask.WebUI.Controllers.CustomerTabs
 {
-    //[CustomerRedirectFilter]
+    [CustomerRedirectFilter]
     [Authorize(Roles = "Admin")]
     public class DepartmentsController : Controller
     {
