@@ -1,0 +1,78 @@
+﻿@model TestTask.Domain.DbEntities.Customer
+
+@{
+    ViewData["Title"] = "GetCustomerInformation";
+}
+
+<h2>Customer information</h2>
+
+<ul class="nav nav-tabs nav-justified">
+    <li class="active"><a href="#">General info</a></li>
+    <li><a asp-action="index" asp-controller="usersinfo" asp-route-customerId="@Context.Request.Query["customerId"]">Users</a></li>
+    <li><a asp-action="index" asp-controller="departments" asp-route-customerId="@Context.Request.Query["customerId"]">Departments</a></li>
+</ul>
+
+<div>
+    <h4>Customer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsMunicipality)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsMunicipality)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfSchools)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfSchools)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "EditCustomer", "CustomerDetails", new { customerId = Model.Id }) |
+    <a asp-action="index" asp-controller="admin">Back to List</a>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        @await Component.InvokeAsync("CustomerContactComponent", new { customerId = Model.Id })
+    </div>
+</div>
+
+

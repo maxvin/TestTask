@@ -10,9 +10,11 @@ using TestTask.Domain.DbEntities.AccountEntities;
 using TestTask.Domain.DbServices.CustomerService;
 using TestTask.Domain.DbServices.DepartmentService;
 using TestTask.Domain.DbServices.UserService;
+using TestTask.WebUI.Components.ActionFilters;
 
 namespace TestTask.WebUI.Controllers.CustomerTabs
 {
+    //[CustomerRedirectFilter]
     [Authorize(Roles = "Admin")]
     public class DepartmentsController : Controller
     {
@@ -30,14 +32,14 @@ namespace TestTask.WebUI.Controllers.CustomerTabs
         public IActionResult Index(int customerId)
         {
             ViewBag.CustomerId = customerId;
-            return View("~/Views/Admin/DepartmentsPage/Index.cshtml", _departmentService.GetCustomerDepartments(customerId));
+            return View("~/Views/Admin/Departments/Index.cshtml", _departmentService.GetCustomerDepartments(customerId));
         }
 
         [HttpGet]
         public IActionResult CreateDepartment(int customerId)
         {
             ViewBag.customerId = customerId;
-            return View("~/Views/Admin/DepartmentsPage/CreateDepartment.cshtml");
+            return View("~/Views/Admin/Departments/CreateDepartment.cshtml");
         }
 
 
@@ -52,7 +54,7 @@ namespace TestTask.WebUI.Controllers.CustomerTabs
                 return RedirectToAction("index", "departments");
             }
             ViewBag.customerId = customerId;
-            return View("~/Views/Admin/DepartmentsPage/CreateDepartment.cshtml", department);
+            return View("~/Views/Admin/Departments/CreateDepartment.cshtml", department);
         }
 
     }

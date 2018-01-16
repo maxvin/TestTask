@@ -73,9 +73,9 @@
                     @Html.DisplayFor(modelItem => item.NumberOfSchools)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "EditCustomer", new {  id=item.Id }) |
-                    @Html.ActionLink("Delete", "RemoveCustomer", new {  id=item.Id }) |
-                    @Html.ActionLink("Info", "GetCustomerInformation", new { customerId = item.Id })
+                    @Html.ActionLink("Edit", "EditCustomer", "CustomerDetails", new { customerId = item.Id }) |
+                    @Html.ActionLink("Delete", "RemoveCustomer", "CustomerDetails", new { customerId = item.Id }) |
+                    @Html.ActionLink("Info", "Index" ,"CustomerDetails", new { customerId = item.Id })
                 </td>
             </tr>
         }

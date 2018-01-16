@@ -49,7 +49,6 @@ namespace TestTask
 
             app.GetServicesByRoute("/AllServices", _services);
             app.UseMvc(AppRouteBuilder.UseRouters);
-            
         }
     }
 }
